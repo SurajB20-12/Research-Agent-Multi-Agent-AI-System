@@ -1,7 +1,8 @@
+from src.pipelines.pipeline import run_research_pipeline
 from src.tools.tools import web_search, scrape_url
 from rich import print
 
-result = scrape_url.invoke(
-    "https://yaleclimateconnections.org/2025/09/what-you-need-to-know-about-ai-and-climate-change/"
-)
-print(result)
+
+topic = "What are the latest advancements in AI research as of 2026?"
+
+run_research_pipeline(topic)

@@ -17,19 +17,44 @@ api_key = os.getenv("TAVILY_API_KEY")
 tavily = TavilyClient(api_key=api_key)
 
 
+def clean_llm_payload(text: str) -> str:
+    """
+    Cleans raw web strings to prevent API schema/function-calling validation errors.
+    Strips markdown links, brackets, and structural tokens that break Llama models.
+    """
+    if not text or not isinstance(text, str):
+        return ""
+
+    # 1. Convert markdown links [Text](URL) -> to just 'Text'
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
+
+    # 2. Strip structural Markdown header elements (#, ##, etc.)
+    text = re.sub(r"#+\s+", "", text)
+
+    # 3. Strip structural curly and square brackets which break JSON payloads
+    text = re.sub(r"[{}\[\]\"]", "", text)
+
+    # 4. Normalize spacing and remove internal escaped line breaks
+    text = text.replace("\\n", " ").replace("\n", " ")
+    text = " ".join(text.split())
+
+    return text
+
+
 @tool
 def web_search(query: str) -> str:
-    """Search the web for recent and reliable information."""
-
+    """Search the web for recent and reliable information on a topic . Returns Titles , URLs and snippets."""
     results = tavily.search(query=query, max_results=5)
 
-    output = []
+    out = []
 
     for r in results["results"]:
-        output.append(
-            f"Title: {r['title']}\nURL: {r['url']}\nSnippet: {r['content'][:300]}\n"
-        )
-    return "\n----\n".join(output)
+        # We sanitize the snippet content right here
+        safe_snippet = clean_llm_payload(r["content"][:300])
+
+        out.append(f"Title: {r['title']}\nURL: {r['url']}\nSnippet: {safe_snippet}\n")
+
+    return "\n----\n".join(out)
 
 
 @tool
