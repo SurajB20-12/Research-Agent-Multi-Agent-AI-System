@@ -63,6 +63,7 @@ TAVILY_API_KEY=your_tavily_api_key_here
 
 📁 Project Structure
 
+```bash
 Research-Agent-Multi-Agent-AI-System/
 ├── main.py # CLI entry point
 ├── app.py # Streamlit UI
@@ -75,3 +76,5 @@ Research-Agent-Multi-Agent-AI-System/
 │ └── pipeline.py # Orchestration logic
 └── tools/
 └── tools.py # web_search & scrape_url
+
+```
