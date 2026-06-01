@@ -19,6 +19,9 @@ Powered by **LangChain**, **Groq LLM**, and **Streamlit**, this system orchestra
 
 ## 🏗️ Architecture
 
+<img width="1112" height="416" alt="image" src="https://github.com/user-attachments/assets/12cfd856-a886-49fc-8b5c-7c964e3e6b42" />
+
+
 **Agent Stack:**
 
 - **LLM**: Groq (meta-llama/llama-4-scout-17b-16e-instruct)
