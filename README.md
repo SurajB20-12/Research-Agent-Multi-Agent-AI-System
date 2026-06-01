@@ -2,6 +2,8 @@
 
 **An intelligent research assistant that autonomously searches, scrapes, writes, and critiques research reports.**
 
+**Project URL:** https://research-agent-multi-agent-ai-system-emabxtuqfyxug3mq592ezt.streamlit.app/
+
 Powered by **LangChain**, **Groq LLM**, and **Streamlit**, this system orchestrates four specialized AI agents to produce polished, fact-based research reports on any topic.
 
 ---
@@ -20,7 +22,6 @@ Powered by **LangChain**, **Groq LLM**, and **Streamlit**, this system orchestra
 ## 🏗️ Architecture
 
 <img width="1112" height="416" alt="image" src="https://github.com/user-attachments/assets/12cfd856-a886-49fc-8b5c-7c964e3e6b42" />
-
 
 **Agent Stack:**
 
@@ -81,3 +82,35 @@ Research-Agent-Multi-Agent-AI-System/
 └── tools.py # web_search & scrape_url
 
 ```
+
+---
+
+### Launch the interactive dashboard:
+
+```bash
+streamlit run app.py
+```
+
+- Then open http://localhost:8501 in your browser.
+
+**Features:**
+
+- Real-time pipeline progress tracking
+- Beautiful step-by-step visualization
+- Expandable result panels
+- Download reports as .md files
+- Built-in styling and responsive design
+
+---
+
+## 🤝 Contributing
+
+**Contributions welcome! Areas for improvement:**
+
+- Better agent prompt engineering
+- Enhanced error handling
+- Support for additional search engines
+- Cacheability for repeated queries
+- Multi-language support
+
+**Built with ❤️ using LangChain + Streamlit**
